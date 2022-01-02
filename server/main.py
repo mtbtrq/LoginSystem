@@ -26,9 +26,7 @@ mainDatabase.close()
 @app.route("/", methods=["GET"])
 def mainPage():
     return """
-    <h1>Welcome!</h1>
-    <p><code>/get</code> to view all records</p>
-    <p><code>/post</code> to insert a new record</p>
+    <h1>Open index.html to get started!</h1>
     """
 
 @app.route('/get', methods=['GET'])
