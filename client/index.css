@@ -4,6 +4,21 @@
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
 
+p {
+    color: white;
+    margin-top: 50px;
+    font-size: small;
+}
+
+a:any-link {
+    color: #39adad;
+    text-decoration: none;
+}
+
+a:any-link:hover {
+    text-decoration: underline;
+}
+
 body {
     background-color: #151515;
 }
@@ -28,7 +43,7 @@ h1 {
     margin-bottom: 50px;
 }
 
-#submitButton {
+#button {
     border: 2px solid #ff00d4;
     outline: none;
     border-radius: 5px;

@@ -53,8 +53,8 @@ def get():
             "cause": e
         }
 
-@app.route("/post", methods=["POST", "GET"])
-def post():
+@app.route("/createaccount", methods=["POST", "GET"])
+def createAccount():
     try:
         username = request.form["username"]
         email = request.form["email"]
@@ -67,11 +67,39 @@ def post():
         connection.commit()
         connection.close()
 
-        return "Signed In!"
+        return f"Signed in as {username}!"
     except Exception as e:
         return {
             "success": False,
             "cause": e
+        }
+
+@app.route("/signin", methods=["POST", "GET"])
+def signIn():
+    try:
+        email = request.form["email"]
+        password = request.form["password"]
+
+        connection = sqlite3.connect(databaseName)
+        cursor = connection.cursor()
+        cursor.execute(f"SELECT * FROM {tableName} WHERE email LIKE '{email}'")
+        dbData = list(cursor.fetchall())[0]
+        print(dbData)
+        connection.close()
+
+        dbPW = list(dbData)[1]
+        dbUsername = list(dbData)[2]
+
+        if dbPW == password:
+            return f"Logged in as {dbUsername}"
+        else:
+            return "Incorrect password!"
+
+    except Exception as e:
+        print(e)
+        return {
+            "success": False,
+            "cause": "No account found with the provided email!"
         }
 
 app.run()
