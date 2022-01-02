@@ -1,0 +1,35 @@
+* {
+    align-items: center;
+    text-align: center;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+    background-color: #151515;
+}
+
+label {
+    font-size: large;
+    color: white;
+}
+
+.inputBox {
+    padding: 5px 5px;
+    font-size: small;
+    border-radius: 5px;
+    border: 2px solid #39adad;
+    outline: none;
+    margin-bottom: 10px;
+    width: 200px;
+}
+
+h1 {
+    color: #39adad;
+    margin-bottom: 50px;
+}
+
+#submitButton {
+    border: 2px solid #ff00d4;
+    outline: none;
+    border-radius: 5px;
+}
