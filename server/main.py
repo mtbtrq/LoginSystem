@@ -61,6 +61,16 @@ def createAccount():
         connection = sqlite3.connect(databaseName)
         cursor = connection.cursor()
 
+        cursor.execute(f"SELECT * FROM {tableName} WHERE username IS '{username}'")
+        sameUserName = cursor.fetchall()
+        if (len(sameUserName) > 0):
+            return "Username already in use!"
+    
+        cursor.execute(f"SELECT * FROM {tableName} WHERE email IS '{email}'")
+        sameEmail = cursor.fetchall()
+        if (len(sameEmail) > 0):
+            return "Email already in use!"
+
         cursor.execute(f"INSERT INTO {tableName} values (?, ?, ?)", (email, password, username))
         connection.commit()
         connection.close()
